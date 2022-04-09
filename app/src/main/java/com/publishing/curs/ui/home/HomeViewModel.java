@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.publishing.curs.App;
 import com.publishing.curs.data.catalog.BannerModel;
+import com.publishing.curs.data.catalog.InfoModel;
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.data.catalog.HeaderModel;
@@ -39,11 +40,12 @@ public class HomeViewModel extends BaseViewModel {
                 .doOnSubscribe(d -> homeModels.clear())
                 .doOnEvent((event, error) -> refreshingLiveData.setValue(false))
                 .subscribe(booksWithAuthors -> {
-                    homeModels.add(new BannerModel("https://covers.openlibrary.org/w/id/10408030-M.jpg"));
+                    homeModels.add(new BannerModel("file:///android_asset/images/image_8.png"));
                     homeModels.add(new HeaderModel("Bestsellers"));
                     for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
                         homeModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
                     }
+                    homeModels.add(new InfoModel("Узнавайте о новинках первыми", "Все новинки, выпускаемые издательством, Вы сможете увидеть на нашем сайте. Мы будем писать вам раз в месяц о новинках в нашем магазине.", "file:///android_asset/images/image_1.png"));
                     homeLiveData.setValue(homeModels);
                 }, throwable -> {
                     errorLiveData.setValue(throwable.getLocalizedMessage());

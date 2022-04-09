@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.publishing.curs.R;
 import com.publishing.curs.data.catalog.BannerModel;
+import com.publishing.curs.data.catalog.InfoModel;
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.data.catalog.HeaderModel;
@@ -48,6 +49,10 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 View bannerView = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_banner, parent, false);
                 return new BannerViewHolder(bannerView);
+            case InfoViewHolder.VIEW_ID:
+                View infoView = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.item_info, parent, false);
+                return new InfoViewHolder(infoView);
             default:
                 throw new IllegalArgumentException("View Type is not supported");
         }
@@ -68,6 +73,9 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
                 bannerViewHolder.bind((BannerModel) data.get(position));
                 break;
+            case InfoViewHolder.VIEW_ID:
+                InfoViewHolder infoViewHolder = (InfoViewHolder) holder;
+                infoViewHolder.bind((InfoModel) data.get(position));
         }
     }
 
@@ -85,6 +93,8 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return BookViewHolder.VIEW_ID;
         } else if (catalogModel instanceof BannerModel) {
             return BannerViewHolder.VIEW_ID;
+        } else if (catalogModel instanceof InfoModel) {
+            return InfoViewHolder.VIEW_ID;
         }
         throw new IllegalArgumentException("Model is not supported");
     }
@@ -150,6 +160,33 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public void bind(BannerModel bannerModel) {
             Glide.with(itemView.getContext())
                     .load(bannerModel.bannerImageUrl)
+                    .centerCrop()
+                    .into(ivBanner);
+        }
+    }
+
+    public static class InfoViewHolder extends RecyclerView.ViewHolder {
+        private final TextView tvHeaderInfo;
+        private final ImageView ivBanner;
+        private final TextView tvInfo;
+
+        public final static int VIEW_ID = 3;
+
+        public InfoViewHolder(View view) {
+            super(view);
+            // Define click listener for the ViewHolder's View
+            tvHeaderInfo = (TextView) view.findViewById(R.id.tvHeaderInfo);
+            ivBanner = (ImageView) view.findViewById(R.id.ivBanner);
+            tvInfo = (TextView) view.findViewById(R.id.tvInfo);
+        }
+
+        public void bind(InfoModel infoModel) {
+            tvHeaderInfo.setText(infoModel.label);
+            tvInfo.setText(infoModel.infoText);
+
+            Glide.with(itemView.getContext())
+                    .load(infoModel.imageUrl)
+                    .centerCrop()
                     .into(ivBanner);
         }
     }
@@ -162,6 +199,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 switch (catalogAdapter.getItemViewType(position)) {
                     case HeaderViewHolder.VIEW_ID:
                     case BannerViewHolder.VIEW_ID:
+                    case InfoViewHolder.VIEW_ID:
                         return 2;
                     case BookViewHolder.VIEW_ID:
                         return 1;
