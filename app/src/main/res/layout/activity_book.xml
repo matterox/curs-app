@@ -6,6 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Widget.AppCompat.Light.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:titleTextColor="?attr/colorPrimary" />
+
     <ProgressBar
         android:id="@+id/pbLoading"
         style="?android:attr/progressBarStyleLarge"
@@ -25,12 +37,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="14dp"
             android:paddingVertical="16dp">
 
             <ImageView
@@ -52,7 +64,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivBookCover"
@@ -65,7 +77,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvBookName"
@@ -78,7 +90,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Read Snippet"
+                android:text="@string/book_read_snippet"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAuthors" />
@@ -90,9 +102,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Information"
+                android:text="@string/book_information"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvReadSnippet" />
@@ -115,8 +127,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:stretchColumns="1"
-                android:shrinkColumns="2"
+                android:shrinkColumns="1"
+                android:stretchColumns="0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfo">
@@ -129,7 +141,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ISBN"
+                        android:text="@string/book_table_isbn"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -139,22 +151,22 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="ISBN"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="ISBN" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/rowTranslators"
-                    tools:visibility="visible"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp">
+                    android:paddingHorizontal="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Translators"
+                        android:text="@string/book_table_translators"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -164,22 +176,22 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="sadasdasdasdasdasdas, asdsadasdasdasdasd, asdasdasda"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="sadasdasdasdasdasdas, asdsadasdasdasdasd, asdasdasda" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/rowCycle"
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp">
+                    android:paddingHorizontal="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cycle"
+                        android:text="@string/book_table_cycle"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -189,22 +201,22 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="Test Cycle"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="Test Cycle" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/rowFormat"
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp">
+                    android:paddingHorizontal="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Format"
+                        android:text="@string/book_table_format"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -214,22 +226,22 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="120x80"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="120x80" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/rowSeries"
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp">
+                    android:paddingHorizontal="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Series"
+                        android:text="@string/book_table_series"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -239,9 +251,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="Series"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="Series" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -250,7 +263,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Category"
+                        android:text="@string/book_table_category"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -260,9 +273,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="Category"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="Category" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -271,7 +285,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Year"
+                        android:text="@string/book_table_year"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -281,9 +295,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="2020"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="2020" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -292,7 +307,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Weigh"
+                        android:text="@string/book_table_weigh"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -302,9 +317,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="12 kg"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="12 kg" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -313,7 +329,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pages"
+                        android:text="@string/book_table_pages"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -323,8 +339,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        tools:text="420"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:text="420" />
                 </TableRow>
             </TableLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,33 @@
 <resources>
     <string name="app_name">PublishingCurs</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_catalog">Catalog</string>
-    <string name="title_contact">Contact</string>
+    <string name="title_home">Главная</string>
+    <string name="title_catalog">Каталог</string>
+    <string name="title_contact">Связь</string>
+    <string name="book_read_snippet">Прочитать отрывок</string>
+    <string name="book_information">Аннотация</string>
+    <string name="book_table_isbn">ISBN</string>
+    <string name="book_table_translators">Переводчик</string>
+    <string name="book_table_cycle">Цикл</string>
+    <string name="book_table_format">Формат</string>
+    <string name="book_table_series">Издательская серия</string>
+    <string name="book_table_category">Категория</string>
+    <string name="book_table_year">Год издания</string>
+    <string name="book_table_weigh">Вес</string>
+    <string name="book_table_pages">Кол-во книг</string>
+    <string name="contact_header">Обратная связь</string>
+    <string name="contact_info">Для связи с нами по вопросам реализации наших продуктов в ваших магазинах и для издания ваших произведений можно оставить свои контактную информацию в форме обратной связи.</string>
+    <string name="contact_form_name">Имя</string>
+    <string name="contact_form_email">Почта</string>
+    <string name="contact_form_message">Сообщение</string>
+    <string name="contact_form_submit">Отправить</string>
+    <string name="contact_location_header">Где мы находимся</string>
+    <string name="contact_location_address">Адрес:</string>
+    <string name="contact_location_full_address">Ленинградский просп., 15, стр. 12, Москва, Россия</string>
+    <string name="contact_location_time_label">Часы работы:</string>
+    <string name="contact_location_time">Пн. - Пт. 9:00 – 10:00</string>
+    <string name="contact_location_contact_label">Контакты:</string>
+    <string name="contact_location_contact">+7 (900) 000–00–00</string>
+    <string name="contact_location_email_label">Почта:</string>
+    <string name="contact_location_email">izdatelstvo@mail.ru</string>
 </resources>

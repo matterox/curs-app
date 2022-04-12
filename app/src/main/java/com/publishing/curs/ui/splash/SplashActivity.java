@@ -20,7 +20,6 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         viewModel = new ViewModelProvider(this).get(SplashViewModel.class);
         viewModel.getSplashLoaded().observe(this, l -> openMainActivity());

@@ -7,14 +7,6 @@ import com.publishing.curs.ui.base.BaseViewModel;
 
 public class ContactViewModel extends BaseViewModel {
 
-    private final MutableLiveData<String> mText;
-
     public ContactViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is contact fragment");
-    }
-
-    public LiveData<String> getText() {
-        return mText;
     }
 }

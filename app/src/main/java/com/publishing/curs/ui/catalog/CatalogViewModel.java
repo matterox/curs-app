@@ -46,7 +46,7 @@ public class CatalogViewModel extends BaseViewModel {
                     for (CategoryWithBooksAndAuthors categoryWithBooksAndAuthors : categoriesWithBooksAndAuthors) {
                         CategoryEntity categoryEntity = categoryWithBooksAndAuthors.category;
                         List<BookWithAuthors> booksWithAuthors = categoryWithBooksAndAuthors.booksWithAuthors;
-                        catalogModels.add(new HeaderModel(categoryEntity.titleEng));
+                        catalogModels.add(new HeaderModel(categoryEntity.titleRus));
                         for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
                             catalogModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
                         }

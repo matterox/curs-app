@@ -41,7 +41,7 @@ public class HomeViewModel extends BaseViewModel {
                 .doOnEvent((event, error) -> refreshingLiveData.setValue(false))
                 .subscribe(booksWithAuthors -> {
                     homeModels.add(new BannerModel("file:///android_asset/images/image_8.png"));
-                    homeModels.add(new HeaderModel("Bestsellers"));
+                    homeModels.add(new HeaderModel("Бестселлеры"));
                     for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
                         homeModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
                     }

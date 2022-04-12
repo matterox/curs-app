@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.publishing.curs.databinding.FragmentContactBinding;
 
 public class ContactFragment extends Fragment {
@@ -18,14 +19,12 @@ public class ContactFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ContactViewModel contactViewModel =
-                new ViewModelProvider(this).get(ContactViewModel.class);
 
         binding = FragmentContactBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textNotifications;
-        contactViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        Glide.with(requireContext())
+                .load("file:///android_asset/images/image_7.png")
+                .into(binding.ivMap);
         return root;
     }
 

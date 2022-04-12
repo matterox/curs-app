@@ -24,6 +24,7 @@ public class BookActivity extends BaseActivity {
         binding = ActivityBookBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
