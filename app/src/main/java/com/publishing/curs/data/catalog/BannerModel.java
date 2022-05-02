@@ -2,10 +2,12 @@ package com.publishing.curs.data.catalog;
 
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 
-public class BannerModel extends BaseCatalogModel {
-    public String bannerImageUrl;
+import java.util.List;
 
-    public BannerModel(String bannerImageUrl) {
-        this.bannerImageUrl = bannerImageUrl;
+public class BannerModel extends BaseCatalogModel {
+    public List<String> bannerImagesUrl;
+
+    public BannerModel(List<String> bannerImagesUrl) {
+        this.bannerImagesUrl = bannerImagesUrl;
     }
 }

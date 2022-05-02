@@ -22,10 +22,16 @@ import com.publishing.curs.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.BackpressureStrategy;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.reactivex.rxjava3.subjects.PublishSubject;
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<BaseCatalogModel> data = new ArrayList<>();
@@ -110,7 +116,6 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         public HeaderViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             tvHeader = (TextView) view.findViewById(R.id.tvHeader);
         }
 
@@ -128,7 +133,6 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         public BookViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             ivCover = (ImageView) view.findViewById(R.id.ivBookCover);
             tvName = (TextView) view.findViewById(R.id.tvBookName);
             tvAuthor = (TextView) view.findViewById(R.id.tvBookAuthor);
@@ -141,6 +145,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public void bind(BookModel bookModel) {
             Glide.with(itemView.getContext())
                     .load(Utils.urlByIsbn(bookModel.isbn))
+                    .error(R.drawable.img_not_available)
                     .into(ivCover);
             tvName.setText(bookModel.name);
             tvAuthor.setText(bookModel.authors);
@@ -148,20 +153,33 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public static class BannerViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView ivBanner;
         public final static int VIEW_ID = 2;
+        private final BannerSlideAdapter adapter;
+        private final Disposable scrollDisposable;
+        private int currentPage = 0;
 
         public BannerViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
-            ivBanner = (ImageView) view.findViewById(R.id.ivBanner);
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
+            ScrollingPagerIndicator recyclerIndicator = (ScrollingPagerIndicator) view.findViewById(R.id.indicator);
+            adapter = new BannerSlideAdapter();
+            recyclerView.setAdapter(adapter);
+            recyclerIndicator.attachToRecyclerView(recyclerView);
+
+            scrollDisposable = Observable.interval(3, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(l -> {
+                        currentPage++;
+                        if (currentPage > adapter.getItemCount()) {
+                            currentPage = 0;
+                        }
+                        recyclerView.scrollToPosition(currentPage);
+                    });
         }
 
         public void bind(BannerModel bannerModel) {
-            Glide.with(itemView.getContext())
-                    .load(bannerModel.bannerImageUrl)
-                    .centerCrop()
-                    .into(ivBanner);
+            adapter.setData(bannerModel.bannerImagesUrl);
         }
     }
 
@@ -174,7 +192,6 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         public InfoViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             tvHeaderInfo = (TextView) view.findViewById(R.id.tvHeaderInfo);
             ivBanner = (ImageView) view.findViewById(R.id.ivBanner);
             tvInfo = (TextView) view.findViewById(R.id.tvInfo);

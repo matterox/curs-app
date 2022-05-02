@@ -27,6 +27,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.publishing.curs.MainActivity" />
         </activity>
+        <activity android:name=".ui.booksample.BookSampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.publishing.curs.ui.book.BookActivity"/>
+        </activity>
         <activity android:name="com.publishing.curs.MainActivity"/>
     </application>
 

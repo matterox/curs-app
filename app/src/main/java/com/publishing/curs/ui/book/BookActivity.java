@@ -3,14 +3,18 @@ package com.publishing.curs.ui.book;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.publishing.curs.MainActivity;
+import com.publishing.curs.R;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.databinding.ActivityBookBinding;
 import com.publishing.curs.ui.base.BaseActivity;
+import com.publishing.curs.ui.booksample.BookSampleActivity;
 import com.publishing.curs.utils.Utils;
 
 public class BookActivity extends BaseActivity {
@@ -29,7 +33,7 @@ public class BookActivity extends BaseActivity {
 
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
         long bookId = getIntent().getLongExtra(BUNDLE_BOOK_ID, 0);
-        bookViewModel.loadBook(bookId);
+        bookViewModel.loadBookDetails(bookId);
 
         bookViewModel.getBook().observe(this, this::updateBookData);
         bookViewModel.getTranslators().observe(this, this::updateTranslators);
@@ -39,8 +43,15 @@ public class BookActivity extends BaseActivity {
         bookViewModel.getSeries().observe(this, this::updateSeries);
         bookViewModel.getRefreshing().observe(this, this::updateRefreshing);
         bookViewModel.getError().observe(this, this::showError);
+        bookViewModel.getReadSnippet().observe(this, this::readSnippet);
 
         binding.tvReadSnippet.setOnClickListener(v -> bookViewModel.readSnippetClicked());
+    }
+
+    private void readSnippet(long bookId) {
+        Intent intent = new Intent(this, BookSampleActivity.class);
+        intent.putExtras(BookSampleActivity.args(bookId));
+        startActivity(intent);
     }
 
     @Override
@@ -64,6 +75,7 @@ public class BookActivity extends BaseActivity {
         getSupportActionBar().setTitle(bookModel.name);
         Glide.with(this)
                 .load(Utils.urlByIsbn(bookModel.isbn))
+                .error(R.drawable.img_not_available)
                 .into(binding.ivBookCover);
         binding.tvBookName.setText(bookModel.name);
         binding.tvAuthors.setText(bookModel.authors);

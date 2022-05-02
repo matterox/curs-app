@@ -9,15 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="com.publishing.curs.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-    </fragment>
+        tools:layout="@layout/fragment_home"></fragment>
 
     <fragment
         android:id="@+id/navigation_catalog"
         android:name="com.publishing.curs.ui.catalog.CatalogFragment"
         android:label="@string/title_catalog"
-        tools:layout="@layout/fragment_catalog" >
-    </fragment>
+        tools:layout="@layout/fragment_catalog"></fragment>
 
     <fragment
         android:id="@+id/navigation_contact"
@@ -29,7 +27,17 @@
         android:id="@+id/bookActivity"
         android:name="com.publishing.curs.ui.book.BookActivity"
         android:label="activity_book"
-        tools:layout="@layout/activity_book" >
+        tools:layout="@layout/activity_book">
+        <argument
+            android:name="BOOK_ID"
+            app:argType="long" />
+    </activity>
+
+    <activity
+        android:id="@+id/bookSampleActivity"
+        android:name="com.publishing.curs.ui.booksample.BookSampleActivity"
+        android:label="activity_book_sample"
+        tools:layout="@layout/activity_book_sample">
         <argument
             android:name="BOOK_ID"
             app:argType="long" />

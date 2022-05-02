@@ -21,8 +21,10 @@ public class BookViewModel extends BaseViewModel {
     private final MutableLiveData<String> formatLiveData;
     private final MutableLiveData<String> cycleLiveData;
     private final MutableLiveData<String> seriesiveData;
+    private final MutableLiveData<Long> readSnippetLiveData;
 
     private final BooksDao booksDao = App.getInstance().getDatabase().booksDao();
+    private long bookId = 0L;
 
     public BookViewModel() {
         bookLiveData = new MutableLiveData<>();
@@ -31,9 +33,11 @@ public class BookViewModel extends BaseViewModel {
         formatLiveData = new MutableLiveData<>();
         cycleLiveData = new MutableLiveData<>();
         seriesiveData = new MutableLiveData<>();
+        readSnippetLiveData = new MutableLiveData<>();
     }
 
-    public void loadBook(long bookId) {
+    public void loadBookDetails(long bookId) {
+        this.bookId = bookId;
         track(
                 booksDao.getBookAndAuthors(bookId)
                         .subscribeOn(Schedulers.io())
@@ -139,7 +143,7 @@ public class BookViewModel extends BaseViewModel {
     }
 
     public void readSnippetClicked() {
-
+        readSnippetLiveData.setValue(bookId);
     }
 
     public LiveData<BookModel> getBook() {
@@ -163,4 +167,6 @@ public class BookViewModel extends BaseViewModel {
     public LiveData<String> getSeries() {
         return seriesiveData;
     }
+
+    public LiveData<Long> getReadSnippet() { return readSnippetLiveData; }
 }

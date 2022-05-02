@@ -4,14 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
 import com.publishing.curs.databinding.FragmentContactBinding;
+
+import java.io.InputStream;
 
 public class ContactFragment extends Fragment {
 
@@ -22,9 +24,34 @@ public class ContactFragment extends Fragment {
 
         binding = FragmentContactBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Glide.with(requireContext())
-                .load("file:///android_asset/images/image_7.png")
-                .into(binding.ivMap);
+        WebSettings webSettings = binding.webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        binding.webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                android.util.Log.d("WebView", consoleMessage.message());
+                return true;
+            }
+        });
+
+        try {
+            InputStream is = getActivity().getAssets().open("html/yandex_map.html");
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+
+            String htmlText = new String(buffer);
+            binding.webView.loadDataWithBaseURL(
+                    "http://ru.yandex.api.yandexmapswebviewexample.ymapapp",
+                    htmlText,
+                    "text/html",
+                    "UTF-8",
+                    null
+            );
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
         return root;
     }
 

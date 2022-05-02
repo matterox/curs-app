@@ -40,7 +40,7 @@ public class HomeViewModel extends BaseViewModel {
                 .doOnSubscribe(d -> homeModels.clear())
                 .doOnEvent((event, error) -> refreshingLiveData.setValue(false))
                 .subscribe(booksWithAuthors -> {
-                    homeModels.add(new BannerModel("file:///android_asset/images/image_8.png"));
+                    homeModels.add(new BannerModel(bannerImages()));
                     homeModels.add(new HeaderModel("Бестселлеры"));
                     for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
                         homeModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
@@ -62,5 +62,13 @@ public class HomeViewModel extends BaseViewModel {
 
     public LiveData<BookModel> getOpenBook() {
         return openBookLiveData;
+    }
+
+    private List<String> bannerImages() {
+        List<String> imagesUrls = new ArrayList<>();
+        imagesUrls.add("file:///android_asset/images/image_8.png");
+        imagesUrls.add("file:///android_asset/images/image_9.png");
+        imagesUrls.add("file:///android_asset/images/image_10.png");
+        return imagesUrls;
     }
 }
