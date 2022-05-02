@@ -118,6 +118,7 @@ INSERT INTO `books_has_authors` (`id_Book`, `id_Author`) VALUES
 (8, 4),
 (4, 5),
 (5, 6),
+(9, 5),
 (10, 7),
 (11, 8),
 (12, 9),
