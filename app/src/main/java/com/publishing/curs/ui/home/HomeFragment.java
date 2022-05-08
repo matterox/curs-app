@@ -31,6 +31,7 @@ public class HomeFragment extends BaseFragment {
     private CatalogAdapter catalogAdapter;
     private final static int NUM_OF_COLUMNS = 2;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

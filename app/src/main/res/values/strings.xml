@@ -3,6 +3,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Главная</string>
     <string name="title_catalog">Каталог</string>
+    <string name="title_authors">Авторы</string>
     <string name="title_contact">Связь</string>
     <string name="book_read_snippet">Прочитать отрывок</string>
     <string name="book_information">Аннотация</string>

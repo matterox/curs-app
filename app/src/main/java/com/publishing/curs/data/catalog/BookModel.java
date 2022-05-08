@@ -2,6 +2,8 @@ package com.publishing.curs.data.catalog;
 
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 
+import java.util.Objects;
+
 public class BookModel extends BaseCatalogModel {
     public long bookId;
     public String name;
@@ -24,5 +26,18 @@ public class BookModel extends BaseCatalogModel {
         this.year = year;
         this.pages = pages;
         this.weigh = weigh;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookModel bookModel = (BookModel) o;
+        return bookId == bookModel.bookId && Objects.equals(name, bookModel.name) && Objects.equals(authors, bookModel.authors) && Objects.equals(imageUrl, bookModel.imageUrl) && Objects.equals(bookDescription, bookModel.bookDescription) && isbn.equals(bookModel.isbn) && Objects.equals(year, bookModel.year) && Objects.equals(pages, bookModel.pages) && Objects.equals(weigh, bookModel.weigh);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId, name, authors, imageUrl, bookDescription, isbn, year, pages, weigh);
     }
 }

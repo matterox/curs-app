@@ -7,6 +7,7 @@ import com.publishing.curs.App;
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.data.catalog.HeaderModel;
+import com.publishing.curs.data.catalog.mappers.BookWithAuthorsMapper;
 import com.publishing.curs.database.BooksDao;
 import com.publishing.curs.database.entities.relation.BookWithAuthors;
 import com.publishing.curs.database.entities.CategoryEntity;
@@ -48,7 +49,7 @@ public class CatalogViewModel extends BaseViewModel {
                         List<BookWithAuthors> booksWithAuthors = categoryWithBooksAndAuthors.booksWithAuthors;
                         catalogModels.add(new HeaderModel(categoryEntity.titleRus));
                         for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
-                            catalogModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
+                            catalogModels.add(BookWithAuthorsMapper.toBookModel(bookWithAuthors));
                         }
                     }
                     catalogLiveData.setValue(catalogModels);

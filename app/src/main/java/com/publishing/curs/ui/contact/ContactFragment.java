@@ -19,6 +19,7 @@ public class ContactFragment extends Fragment {
 
     private FragmentContactBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

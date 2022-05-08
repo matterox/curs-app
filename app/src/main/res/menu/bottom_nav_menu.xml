@@ -12,6 +12,11 @@
         android:title="@string/title_catalog" />
 
     <item
+        android:id="@+id/navigation_authors"
+        android:icon="@drawable/ic_authors"
+        android:title="@string/title_authors" />
+
+    <item
         android:id="@+id/navigation_contact"
         android:icon="@drawable/ic_contact"
         android:title="@string/title_contact" />

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.publishing.curs.App;
 import com.publishing.curs.data.catalog.BookModel;
+import com.publishing.curs.data.catalog.mappers.BookWithAuthorsMapper;
 import com.publishing.curs.database.BooksDao;
 import com.publishing.curs.database.entities.BookEntity;
 import com.publishing.curs.database.entities.relation.BookWithAuthors;
@@ -45,7 +46,7 @@ public class BookViewModel extends BaseViewModel {
                         .doOnSubscribe(d -> refreshingLiveData.setValue(true))
                         .doOnTerminate(() -> refreshingLiveData.setValue(false))
                         .subscribe(bookWithAuthors -> {
-                            bookLiveData.setValue(BookWithAuthors.toBookModel(bookWithAuthors));
+                            bookLiveData.setValue(BookWithAuthorsMapper.toBookModel(bookWithAuthors));
                             BookEntity book = bookWithAuthors.book;
                             Integer categoryId = book.category;
                             Integer seriaId = book.seria;

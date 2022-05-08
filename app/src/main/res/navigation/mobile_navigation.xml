@@ -9,13 +9,19 @@
         android:id="@+id/navigation_home"
         android:name="com.publishing.curs.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home"></fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_catalog"
         android:name="com.publishing.curs.ui.catalog.CatalogFragment"
         android:label="@string/title_catalog"
-        tools:layout="@layout/fragment_catalog"></fragment>
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/navigation_authors"
+        android:name="com.publishing.curs.ui.authors.AuthorsFragment"
+        android:label="@string/title_authors"
+        tools:layout="@layout/fragment_authors" />
 
     <fragment
         android:id="@+id/navigation_contact"

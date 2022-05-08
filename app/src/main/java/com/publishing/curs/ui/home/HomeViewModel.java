@@ -9,6 +9,7 @@ import com.publishing.curs.data.catalog.InfoModel;
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.data.catalog.HeaderModel;
+import com.publishing.curs.data.catalog.mappers.BookWithAuthorsMapper;
 import com.publishing.curs.database.BooksDao;
 import com.publishing.curs.database.entities.relation.BookWithAuthors;
 import com.publishing.curs.ui.base.BaseViewModel;
@@ -43,7 +44,7 @@ public class HomeViewModel extends BaseViewModel {
                     homeModels.add(new BannerModel(bannerImages()));
                     homeModels.add(new HeaderModel("Бестселлеры"));
                     for (BookWithAuthors bookWithAuthors : booksWithAuthors) {
-                        homeModels.add(BookWithAuthors.toBookModel(bookWithAuthors));
+                        homeModels.add(BookWithAuthorsMapper.toBookModel(bookWithAuthors));
                     }
                     homeModels.add(new InfoModel("Узнавайте о новинках первыми", "Все новинки, выпускаемые издательством, Вы сможете увидеть на нашем сайте. Мы будем писать вам раз в месяц о новинках в нашем магазине.", "file:///android_asset/images/image_1.png"));
                     homeLiveData.setValue(homeModels);
