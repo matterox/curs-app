@@ -42,10 +42,18 @@
     <activity
         android:id="@+id/bookSampleActivity"
         android:name="com.publishing.curs.ui.booksample.BookSampleActivity"
-        android:label="activity_book_sample"
-        tools:layout="@layout/activity_book_sample">
+        android:label="activity_book_sample">
         <argument
             android:name="BOOK_ID"
+            app:argType="long" />
+    </activity>
+    <activity
+        android:id="@+id/authorActivity"
+        android:name="com.publishing.curs.ui.author.AuthorActivity"
+        android:label="@string/title_author"
+        tools:layout="@layout/activity_author">
+        <argument
+            android:name="AUTHOR_ID"
             app:argType="long" />
     </activity>
 </navigation>

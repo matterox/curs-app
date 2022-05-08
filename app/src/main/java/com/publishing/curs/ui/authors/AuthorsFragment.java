@@ -15,6 +15,7 @@ import com.publishing.curs.data.catalog.AuthorModel;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.data.catalog.base.BaseCatalogModel;
 import com.publishing.curs.databinding.FragmentAuthorsBinding;
+import com.publishing.curs.ui.author.AuthorActivity;
 import com.publishing.curs.ui.base.BaseFragment;
 import com.publishing.curs.ui.book.BookActivity;
 import com.publishing.curs.ui.catalog.adapter.CatalogAdapter;
@@ -74,8 +75,8 @@ public class AuthorsFragment extends BaseFragment {
         catalogAdapter.setData(data);
     }
 
-    private void openAuthor(AuthorModel book) {
-//        navigator().navigate(R.id.bookActivity, BookActivity.args(book.bookId));
+    private void openAuthor(AuthorModel author) {
+        navigator().navigate(R.id.authorActivity, AuthorActivity.args(author.authorId));
     }
 
     private void updateRefreshing(boolean isRefreshing) {

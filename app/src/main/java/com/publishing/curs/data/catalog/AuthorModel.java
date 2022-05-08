@@ -16,7 +16,7 @@ public class AuthorModel extends BaseCatalogModel {
         this.imageUrl = imageUrl;
         this.authorName = authorName;
         this.biography = biography;
-        this.biography = biography;
+        this.birthday = birthday;
     }
 
     @Override

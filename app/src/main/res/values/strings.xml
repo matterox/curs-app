@@ -4,6 +4,7 @@
     <string name="title_home">Главная</string>
     <string name="title_catalog">Каталог</string>
     <string name="title_authors">Авторы</string>
+    <string name="title_author">Автор</string>
     <string name="title_contact">Связь</string>
     <string name="book_read_snippet">Прочитать отрывок</string>
     <string name="book_information">Аннотация</string>
@@ -31,4 +32,6 @@
     <string name="contact_location_contact">+7 (900) 000–00–00</string>
     <string name="contact_location_email_label">Почта:</string>
     <string name="contact_location_email">izdatelstvo@mail.ru</string>
+    <string name="author_date_of_birth">Дата рождения:</string>
+    <string name="author_biography_label">Биография</string>
 </resources>

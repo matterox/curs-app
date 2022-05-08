@@ -21,8 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.publishing.curs.ui.book.BookActivity"
-            android:exported="true">
+        <activity android:name="com.publishing.curs.ui.book.BookActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.publishing.curs.MainActivity" />
@@ -33,6 +32,11 @@
                 android:value="com.publishing.curs.ui.book.BookActivity"/>
         </activity>
         <activity android:name="com.publishing.curs.MainActivity"/>
+        <activity android:name="com.publishing.curs.ui.author.AuthorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.publishing.curs.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_catalog.xml" value="0.276" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.276" />
         <entry key="app/src/main/res/drawable/shape_corners.xml" value="0.209" />
+        <entry key="app/src/main/res/layout/activity_author.xml" value="0.19957264957264959" />
         <entry key="app/src/main/res/layout/activity_book.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/activity_book_sample.xml" value="0.16538461538461538" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
