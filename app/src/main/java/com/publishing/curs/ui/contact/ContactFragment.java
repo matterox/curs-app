@@ -1,5 +1,6 @@
 package com.publishing.curs.ui.contact;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,19 +10,25 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.publishing.curs.R;
 import com.publishing.curs.databinding.FragmentContactBinding;
+import com.publishing.curs.ui.base.BaseFragment;
 
 import java.io.InputStream;
 
-public class ContactFragment extends Fragment {
+public class ContactFragment extends BaseFragment {
 
     private FragmentContactBinding binding;
+    private ContactViewModel contactViewModel;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        contactViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
 
         binding = FragmentContactBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -53,6 +60,12 @@ public class ContactFragment extends Fragment {
         } catch (Throwable e) {
             e.printStackTrace();
         }
+        contactViewModel.getMessageSent().observe(getViewLifecycleOwner(), this::messageSent);
+        binding.btnSend.setOnClickListener(v -> contactViewModel.sendMessage(
+                binding.etName.getText().toString(),
+                binding.etEmail.getText().toString(),
+                binding.etMessage.getText().toString()
+        ));
         return root;
     }
 
@@ -60,5 +73,16 @@ public class ContactFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void messageSent(Boolean success) {
+        binding.etName.setText("");
+        binding.etEmail.setText("");
+        binding.etMessage.setText("");
+        if (success) {
+            showMessage(getString(R.string.common_success), getString(R.string.contact_message_send_success));
+        } else {
+            showError(getString(R.string.contact_message_fields_error));
+        }
     }
 }

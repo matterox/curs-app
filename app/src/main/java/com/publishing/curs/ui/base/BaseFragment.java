@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.publishing.curs.R;
+
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 
@@ -37,9 +39,17 @@ public abstract class BaseFragment extends Fragment {
 
     protected void showError(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Error");
+        builder.setTitle(getString(R.string.common_error));
         builder.setMessage(message);
-        builder.setPositiveButton("OK", null);
+        builder.setPositiveButton(getString(R.string.common_ok), null);
+        builder.show();
+    }
+
+    protected void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton(getString(R.string.common_ok), null);
         builder.show();
     }
 

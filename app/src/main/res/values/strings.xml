@@ -32,6 +32,11 @@
     <string name="contact_location_contact">+7 (900) 000–00–00</string>
     <string name="contact_location_email_label">Почта:</string>
     <string name="contact_location_email">izdatelstvo@mail.ru</string>
+    <string name="contact_message_send_success">Сообщение отправлено</string>
+    <string name="contact_message_fields_error">Заполните все поля формы!</string>
     <string name="author_date_of_birth">Дата рождения:</string>
     <string name="author_biography_label">Биография</string>
+    <string name="common_success">Успех</string>
+    <string name="common_error">Ошибка</string>
+    <string name="common_ok">OK</string>
 </resources>
