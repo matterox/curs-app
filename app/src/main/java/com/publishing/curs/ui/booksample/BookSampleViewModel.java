@@ -14,7 +14,7 @@ public class BookSampleViewModel extends BaseViewModel {
     }
     public void loadBook() {
         String bookLocation = Uri.encode("file:///android_asset/books/the-book-collector-example-2018-04.pdf");
-        bookUrlLiveData.setValue("https://mozilla.github.io/pdf.js/legacy/web/viewer.html?file="+bookLocation);
+        bookUrlLiveData.setValue("https://mozilla.github.io/pdf.js/legacy/web/viewer.html");
     }
 
     public LiveData<String> getBookUrl() {
