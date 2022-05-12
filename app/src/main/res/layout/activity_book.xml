@@ -145,27 +145,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfo">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/book_table_isbn"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvIsbn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textSize="16sp"
-                        tools:text="ISBN" />
-                </TableRow>
 
                 <TableRow
                     android:id="@+id/rowTranslators"
@@ -193,6 +173,28 @@
                 </TableRow>
 
                 <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/book_table_category"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="Category" />
+                </TableRow>
+
+                <TableRow
                     android:id="@+id/rowCycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -215,31 +217,6 @@
                         android:gravity="end"
                         android:textSize="16sp"
                         tools:text="Test Cycle" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/rowFormat"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingHorizontal="8dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/book_table_format"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvFormat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textSize="16sp"
-                        tools:text="120x80" />
                 </TableRow>
 
                 <TableRow
@@ -275,19 +252,50 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/book_table_category"
+                        android:text="@string/book_table_isbn"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvCategory"
+                        android:id="@+id/tvIsbn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="16sp"
-                        tools:text="Category" />
+                        tools:text="ISBN" />
                 </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowFormat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/book_table_format"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvFormat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        tools:text="120x80" />
+                </TableRow>
+
+
+
+
+
+
 
                 <TableRow
                     android:layout_width="match_parent"

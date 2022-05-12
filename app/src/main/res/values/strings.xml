@@ -17,7 +17,7 @@
     <string name="book_table_category">Категория</string>
     <string name="book_table_year">Год издания</string>
     <string name="book_table_weigh">Вес</string>
-    <string name="book_table_pages">Кол-во книг</string>
+    <string name="book_table_pages">Кол-во стр</string>
     <string name="contact_header">Обратная связь</string>
     <string name="contact_info">Для связи с нами по вопросам реализации наших продуктов в ваших магазинах и для издания ваших произведений можно оставить свои контактную информацию в форме обратной связи.</string>
     <string name="contact_form_name">Имя</string>
