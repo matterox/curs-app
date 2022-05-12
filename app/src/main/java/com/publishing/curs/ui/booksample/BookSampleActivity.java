@@ -49,7 +49,6 @@ public class BookSampleActivity extends BaseActivity {
 
         long bookId = getIntent().getLongExtra(BUNDLE_BOOK_ID, 0);
         viewModel.loadBook();
-        binding.srLayout.setOnRefreshListener(viewModel::loadBook);
     }
 
     @Override
@@ -70,7 +69,6 @@ public class BookSampleActivity extends BaseActivity {
     }
 
     private void loadBook(String url) {
-        binding.srLayout.setRefreshing(false);
         binding.webView.loadUrl(url);
     }
 

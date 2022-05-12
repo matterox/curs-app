@@ -226,7 +226,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public void bind(AuthorModel authorModel) {
             Glide.with(itemView.getContext())
                     .load(authorModel.imageUrl)
-                    .error(R.drawable.img_not_available)
+                    .error(R.drawable.img_no_author)
                     .into(ivAuthorImage);
             tvName.setText(authorModel.authorName);
         }
