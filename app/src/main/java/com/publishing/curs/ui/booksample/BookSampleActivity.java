@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.publishing.curs.R;
 import com.publishing.curs.databinding.ActivityBookSampleBinding;
 import com.publishing.curs.ui.base.BaseActivity;
 
@@ -26,6 +27,7 @@ public class BookSampleActivity extends BaseActivity {
 
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.title_snippet));
 
         WebSettings webSettings = binding.webView.getSettings();
         webSettings.setAllowFileAccess(true);
