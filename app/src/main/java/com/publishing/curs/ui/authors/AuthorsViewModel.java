@@ -45,9 +45,7 @@ public class AuthorsViewModel extends BaseViewModel {
                         catalogModels.add(AuthorMapper.toAuthorModel(authorEntity));
                     }
                     authorsLiveData.setValue(catalogModels);
-                }, throwable -> {
-                    errorLiveData.setValue(throwable.getLocalizedMessage());
-                }));
+                }, throwable -> errorLiveData.setValue(throwable.getLocalizedMessage())));
     }
 
     public void authorClicked(AuthorModel bookModel) {

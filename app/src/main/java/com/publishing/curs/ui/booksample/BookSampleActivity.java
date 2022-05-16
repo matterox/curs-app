@@ -2,6 +2,7 @@ package com.publishing.curs.ui.booksample;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -46,9 +47,11 @@ public class BookSampleActivity extends BaseActivity {
         viewModel = new ViewModelProvider(this).get(BookSampleViewModel.class);
 
         viewModel.getBookUrl().observe(this, this::loadBook);
+        viewModel.getRefreshing().observe(this, this::updateRefreshing);
+        viewModel.getError().observe(this, this::showError);
 
         long bookId = getIntent().getLongExtra(BUNDLE_BOOK_ID, 0);
-        viewModel.loadBook();
+        viewModel.loadBook(bookId);
     }
 
     @Override
@@ -66,6 +69,16 @@ public class BookSampleActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    private void updateRefreshing(boolean isRefreshing) {
+        if (isRefreshing) {
+            binding.webView.setVisibility(View.GONE);
+            binding.pbLoading.setVisibility(View.VISIBLE);
+        } else {
+            binding.webView.setVisibility(View.VISIBLE);
+            binding.pbLoading.setVisibility(View.GONE);
+        }
     }
 
     private void loadBook(String url) {

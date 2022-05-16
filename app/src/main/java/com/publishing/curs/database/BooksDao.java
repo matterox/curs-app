@@ -5,6 +5,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 
 import com.publishing.curs.database.entities.AuthorEntity;
+import com.publishing.curs.database.entities.BookEntity;
 import com.publishing.curs.database.entities.CategoryEntity;
 import com.publishing.curs.database.entities.CycleEntity;
 import com.publishing.curs.database.entities.FormatEntity;
@@ -29,6 +30,10 @@ public interface BooksDao {
     @Transaction
     @Query("SELECT * FROM books WHERE id_Book = :bookId")
     Single<BookWithAuthors> getBookAndAuthors(long bookId);
+
+    @Transaction
+    @Query("SELECT * FROM books WHERE id_Book = :bookId")
+    Single<BookEntity> getBook(long bookId);
 
     @Query("SELECT * FROM authors")
     Single<List<AuthorEntity>> getAuthors();

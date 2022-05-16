@@ -71,4 +71,7 @@ public class BookEntity {
     @ColumnInfo(name = "is_Best", defaultValue = "0")
     @NonNull
     public Integer isBest = 0;
+
+    @ColumnInfo(name = "snippet_Url")
+    public String snippetUrl;
 }
