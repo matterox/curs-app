@@ -3,13 +3,11 @@ package com.publishing.curs.ui.book;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
-import com.publishing.curs.MainActivity;
 import com.publishing.curs.R;
 import com.publishing.curs.data.catalog.BookModel;
 import com.publishing.curs.databinding.ActivityBookBinding;
@@ -49,9 +47,7 @@ public class BookActivity extends BaseActivity {
     }
 
     private void readSnippet(long bookId) {
-        Intent intent = new Intent(this, BookSampleActivity.class);
-        intent.putExtras(BookSampleActivity.args(bookId));
-        startActivity(intent);
+        startActivity(BookSampleActivity.getIntent(this, bookId));
     }
 
     @Override

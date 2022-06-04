@@ -57,4 +57,14 @@
             android:name="AUTHOR_ID"
             app:argType="long" />
     </activity>
+    <activity
+        android:id="@+id/splashActivity"
+        tools:layout="@layout/activity_splash"
+        android:name="com.publishing.curs.ui.splash.SplashActivity"
+        android:label="SplashActivity" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.publishing.curs.MainActivity"
+        tools:layout="@layout/activity_main"
+        android:label="MainActivity" />
 </navigation>

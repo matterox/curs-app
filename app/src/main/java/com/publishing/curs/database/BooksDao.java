@@ -31,7 +31,6 @@ public interface BooksDao {
     @Query("SELECT * FROM books WHERE id_Book = :bookId")
     Single<BookWithAuthors> getBookAndAuthors(long bookId);
 
-    @Transaction
     @Query("SELECT * FROM books WHERE id_Book = :bookId")
     Single<BookEntity> getBook(long bookId);
 

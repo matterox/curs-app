@@ -1,5 +1,7 @@
 package com.publishing.curs.ui.booksample;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,10 +87,12 @@ public class BookSampleActivity extends BaseActivity {
         binding.webView.loadUrl(url);
     }
 
-    public static Bundle args(long bookId) {
+    public static Intent getIntent(Context context, long bookId) {
+        Intent intent = new Intent(context, BookSampleActivity.class);
         Bundle bundle = new Bundle();
         bundle.putLong(BUNDLE_BOOK_ID, bookId);
-        return bundle;
+        intent.putExtras(bundle);
+        return intent;
     }
 
     private static final String BUNDLE_BOOK_ID = "BOOK_ID";

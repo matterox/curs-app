@@ -5,7 +5,7 @@ import androidx.room.Junction;
 import androidx.room.Relation;
 
 import com.publishing.curs.database.entities.BookEntity;
-import com.publishing.curs.database.entities.BookTranslators;
+import com.publishing.curs.database.entities.BookTranslatorsEntity;
 import com.publishing.curs.database.entities.TranslatorEntity;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class BookWithTranslators {
     @Embedded
     public BookEntity book;
 
-    @Relation(parentColumn = "id_Book", entityColumn = "id_Translator", associateBy = @Junction(BookTranslators.class))
+    @Relation(parentColumn = "id_Book", entityColumn = "id_Translator", associateBy = @Junction(BookTranslatorsEntity.class))
     public List<TranslatorEntity> translators;
 
     public static String getTranslators(BookWithTranslators bookWithTranslators) {
